@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import*
-from django.views.generic import ListView, DetailView,CreateView,UpdateView
+from django.views.generic import ListView, DetailView,CreateView,UpdateView,DeleteView
 from django.urls import reverse_lazy
 from . forms import PostForm
 
@@ -34,4 +34,10 @@ class EditView(UpdateView):
     fields = '__all__'
     pk_url_kwarg = 'pk'
     success_url = reverse_lazy('core:post')
+
+class DeleteView(DeleteView):
+    model = Core
+    pk_url_kwarg = 'pk'
+    success_url = reverse_lazy('core:post')
+    template_name = 'core/confirm_delete.html'
     

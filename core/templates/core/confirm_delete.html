@@ -1,0 +1,11 @@
+{% extends 'core/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container p-5">
+    <form method="POST" novalidate> <!-- Change action="POST" to method="POST" -->
+        {% csrf_token %}
+        <p>Are you sure you want to delete {{ object }}</p>
+        <input type="submit" value="Confirm">
+    </form>
+</div>
+{% endblock %}

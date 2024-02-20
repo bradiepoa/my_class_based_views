@@ -32,7 +32,9 @@
                         <p class="card-text">Goes here</p>
                         <div class="d-flex justify-content-between align-item-center">
                             <div class="btn-group">
-                              <a href="{{post.get_absolute_url}}" class="btn btn-sm btn-primary" role="button" aria-presses="true">view</a>
+                              <a href="{{ post.get_absolute_url }}" class="btn btn-sm btn-primary" role="button">view</a>
+                              <a href="{% url 'core:edit' post.pk %}" class="btn btn-sm btn-secondary p-2" role="button">edit</a>
+                              <a href="{% url 'core:delete' post.pk %}" class="btn btn-sm btn-danger" role="button">delete</a>                              
                             </div>
                             <small class="text-muted">9 minutes</small>
                         </div>
