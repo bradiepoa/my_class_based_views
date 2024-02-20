@@ -13,3 +13,8 @@ class SingleView(DetailView):
     model = Core
     template_name = 'core/single.html'
     context_object_name = 'post'
+
+class PostsView(ListView):
+    models = Core
+    template_name = 'core/posts.html'
+    context_object_name = 'post_list'
