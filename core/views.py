@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import*
 from django.views.generic import ListView, DetailView,CreateView,UpdateView
 from django.urls import reverse_lazy
+from . forms import PostForm
 
 # Create your views here. 
 class IndexView(ListView):
@@ -19,9 +20,18 @@ class PostsView(ListView):
     template_name = 'core/posts.html'
     context_object_name = 'post_list'
 
+
 class AddView(CreateView):
     model = Core
     template_name = 'core/add.html'
     fields = '__all__'
+    success_url = reverse_lazy('core:post')
+
+
+class EditView(UpdateView):
+    model = Core
+    template_name = 'core/edit.html'
+    fields = '__all__'
+    pk_url_kwarg = 'pk'
     success_url = reverse_lazy('core:post')
     

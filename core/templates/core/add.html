@@ -1,16 +1,14 @@
 {% extends 'core/base.html' %}
 {% load widget_tweaks %}
 {% block content %}
-
-<div class="container">
-
-    <form action="POST" novalidate>
+<div class="container p-5">
+    <form method="POST" novalidate> <!-- Change action="POST" to method="POST" -->
         {% csrf_token %}
-        {% for field in form.visible_fileds %}
+        {% for field in form.visible_fields %} <!-- Correct typo here -->
         <div class="form-group">
-            <label for="{{ field.id_for_label }}">{{field.label}}</label>
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
             {{ field|add_class:'form-control' }}
-            {% for error in filed.error %}
+            {% for error in field.errors %} <!-- Correct typo here -->
             <span class="help-block">{{ error }}</span>
             {% endfor %}
         </div>
@@ -18,33 +16,10 @@
 
         <div class="form-group">
             <button type="submit" class="btn btn-success">
-                <span class="glyphicon glyphicon-ok"></span>Edit
+                <span class="glyphicon glyphicon-ok"></span> Add
             </button>
-            <a class="btn btn-default" href="{% url 'core:post' %}">Cancel</a>
+            <a class="btn btn-default" href="{% url 'core:post' %}">Cancel</a> <!-- Make sure this URL name is correct -->
         </div>
     </form>
-
-    <div class="row">
-        {% for core in index %}
-        <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="" alt="images">
-                <div class="card-body">
-                    <h4 class="">
-                        <a href="{{core.get_absolute_url}}">{{core.title}}</a>
-                    </h4>
-                    <p class="card-text">Goes here</p>
-                    <div class="d-flex justify-content-between align-item-center">
-                        <div class="">
-                            <small class="text-muted">9 minutes</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        {% endfor %}
-
-    </div>
 </div>
 {% endblock %}
