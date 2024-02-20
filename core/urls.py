@@ -5,6 +5,7 @@ app_name = 'core'
 
 urlpatterns = [
     path('',views.IndexView.as_view(), name="home"),
+    path('add/',views.AddView.as_view(), name="add"),
     path('posts/',views.PostsView.as_view(), name="post"),
     path('<slug:slug>/', views.SingleView.as_view(), name="single")
 ]
