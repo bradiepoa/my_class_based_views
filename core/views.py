@@ -15,6 +15,6 @@ class SingleView(DetailView):
     context_object_name = 'post'
 
 class PostsView(ListView):
-    models = Core
+    model = Core
     template_name = 'core/posts.html'
     context_object_name = 'post_list'
